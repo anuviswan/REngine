@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "REngine.API", "web\REngine.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "REngine.MongoDb", "dl\REngine.MongoDb\REngine.MongoDb.csproj", "{D8436684-E17F-414D-BC4A-2196BB877011}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "REngine.Model", "lib\REngine.Model\REngine.Model.csproj", "{6096D8C9-62C1-42F0-A13E-297C151111DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{D8436684-E17F-414D-BC4A-2196BB877011}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8436684-E17F-414D-BC4A-2196BB877011}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8436684-E17F-414D-BC4A-2196BB877011}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6096D8C9-62C1-42F0-A13E-297C151111DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6096D8C9-62C1-42F0-A13E-297C151111DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6096D8C9-62C1-42F0-A13E-297C151111DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6096D8C9-62C1-42F0-A13E-297C151111DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,5 +54,6 @@ Global
 		{9479FB60-DB7B-4850-921F-44870485CD59} = {1D1E1EE1-E381-4F37-BA05-CCE98359C05A}
 		{24B4504C-5DB2-45E8-822C-F9FE7581D71B} = {E0DF13E8-57C4-4EC5-A13A-1E227D68C6BB}
 		{D8436684-E17F-414D-BC4A-2196BB877011} = {D7E60634-F9B5-438C-B2E8-B311FD9408E7}
+		{6096D8C9-62C1-42F0-A13E-297C151111DB} = {1D1E1EE1-E381-4F37-BA05-CCE98359C05A}
 	EndGlobalSection
 EndGlobal

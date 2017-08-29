@@ -40,7 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IUser.cs" />
+    <Compile Include="Concrete\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\REngine.Data\REngine.Data.csproj">
+      <Project>{9479fb60-db7b-4850-921f-44870485cd59}</Project>
+      <Name>REngine.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\REngine.Model\REngine.Model.csproj">
+      <Project>{6096d8c9-62c1-42f0-a13e-297c151111db}</Project>
+      <Name>REngine.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
