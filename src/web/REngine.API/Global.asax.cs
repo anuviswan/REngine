@@ -18,6 +18,16 @@ namespace REngine.API
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            UnityConfig.RegisterComponents();
+            InitializeAutoMapper();
+        }
+
+        void InitializeAutoMapper()
+        {
+            AutoMapper.Mapper.Initialize(x =>
+            {
+                x.AddProfiles(typeof(API.Controllers.BaseController));
+            });
         }
     }
 }

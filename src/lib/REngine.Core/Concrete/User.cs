@@ -10,15 +10,31 @@ namespace REngine.Core.Concrete
 {
     public class User : Abstract.IUser
     {
-        private IUser _UserInstance;
+        private Data.IUser _UserInstance;
 
         public User(Data.IUser UserInstance)
         {
             _UserInstance = UserInstance;
         }
-        public bool Validate(out Identity User)
+
+        public bool Add(Model.User.Identity UserIdentity)
         {
-            throw new NotImplementedException();
+            return _UserInstance.Add(UserIdentity);
+        }
+
+        public Identity Get(string Username)
+        {
+            return _UserInstance.GetUser(Username);
+        }
+
+        public IList<Identity> GetAll()
+        {
+            return _UserInstance.GetAll();
+        }
+
+        public Model.User.Identity Validate(Model.User.Identity User,out bool IsAuthenticated)
+        {
+            return _UserInstance.ValidateUser(User, out IsAuthenticated);
         }
     }
 }
