@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormControl,Validators,ReactiveFormsModule  } from "@angular/forms";
 import { routerTransition } from '../router.animations';
 import { UserService } from '../shared';
+import { ApiService } from '../shared';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 interface User{
@@ -22,7 +23,7 @@ export class LoginComponent implements OnInit {
     frmLogin;
     constructor(public router: Router,
                 private userSrv:UserService,
-                private httpClient:HttpClient
+                private apiService:ApiService
                 ) {}
 
     ngOnInit() {
@@ -34,9 +35,9 @@ export class LoginComponent implements OnInit {
 
     onSubmit(user) {
         console.log('Submitting Form');
-        console.log(user);
+        this.apiService.postRequest('user/validate',{username:user.username,password:user.password});
 
-        const req = this.httpClient.post('http://localhost:1246/api/user/validate',{
+        /* const req = this.httpClient.post('http://localhost:1246/api/user/validate',{
             username:'foo',
             password:'bar'
         }).subscribe(
@@ -47,7 +48,8 @@ export class LoginComponent implements OnInit {
             error=>{
                 console.log("error occured");
             }
-        )
+        ) */
+        
         
         this.userSrv.setUserLoggedin();
         localStorage.setItem('isLoggedin', 'true');

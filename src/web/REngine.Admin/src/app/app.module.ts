@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 import { UserService } from './shared';
+import { ApiService } from './shared';
 import {HttpClientModule} from '@angular/common/http';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: Http) {
@@ -36,7 +37,7 @@ export function HttpLoaderFactory(http: Http) {
             }
         })
     ],
-    providers: [AuthGuard,UserService],
+    providers: [AuthGuard,UserService,ApiService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
