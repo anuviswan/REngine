@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
         }).subscribe(
             res=>{
                 console.log(res);
+                this.router.navigate(["dashboard"]);
             },
             error=>{
                 console.log("error occured");
