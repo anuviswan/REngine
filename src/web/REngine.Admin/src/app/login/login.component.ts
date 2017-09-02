@@ -35,21 +35,15 @@ export class LoginComponent implements OnInit {
 
     onSubmit(user) {
         console.log('Submitting Form');
-        this.apiService.postRequest('user/validate',{username:user.username,password:user.password});
-
-        /* const req = this.httpClient.post('http://localhost:1246/api/user/validate',{
-            username:'foo',
-            password:'bar'
-        }).subscribe(
-            res=>{
-                console.log(res);
-                this.router.navigate(["dashboard"]);
-            },
-            error=>{
-                console.log("error occured");
-            }
-        ) */
-        
+        this.apiService.postRequest('user/validate',
+                            {
+                                username:user.username,
+                                password:user.password
+                            }).subscribe(
+                            data => {
+                                console.log(data.data);
+                                }
+                            );
         
         this.userSrv.setUserLoggedin();
         localStorage.setItem('isLoggedin', 'true');

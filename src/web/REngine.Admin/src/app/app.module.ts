@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 import { UserService } from './shared';
 import { ApiService } from './shared';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: Http) {
     // for development

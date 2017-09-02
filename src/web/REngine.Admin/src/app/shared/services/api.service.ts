@@ -1,20 +1,19 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpResponse} from '@angular/common/http';
+import { Response} from '@angular/http';
+import { Observable} from 'rxjs/Observable';
 
 @Injectable()
+
+
 export class ApiService {
 
+  baseUrl = 'http://localhost:1246/api/';
   constructor(private httpClient : HttpClient) { }
 
-  postRequest(controller:string, param:any){
-  	this.httpClient.post('http://localhost:1246/api/'+ controller,param).subscribe(
-  		data=> {
-  			console.log(data);
-  		},
-  		error =>{
-  			console.log("error:" + error);
-  		}
-  		)
+  postRequest(controller:string, param:any):Observable<any>{
+  	return this.httpClient.post(this.baseUrl + controller,param);
+  						  
   }
 
 }
