@@ -28,8 +28,8 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {
         this.frmLogin = new FormGroup({
-            username : new FormControl("",[Validators.required]),
-            password : new FormControl("",[Validators.required])
+            username : new FormControl("root",[Validators.required]),
+            password : new FormControl("jia",[Validators.required])
         })
     }
 
@@ -41,11 +41,19 @@ export class LoginComponent implements OnInit {
                                 password:user.password
                             }).subscribe(
                             data => {
+                                if(data.data.IsAuthenticated)
+                                {
+                                    console.log("User Validated");
+                                    this.userSrv.setUserLoggedin();
+                                    console.log(this.userSrv.getUserLoggedIn());
+                                    this.router.navigate(["/dashboard"]);
+
+                                }
                                 console.log(data.data);
                                 }
                             );
         
-        this.userSrv.setUserLoggedin();
+        
         localStorage.setItem('isLoggedin', 'true');
     }
 

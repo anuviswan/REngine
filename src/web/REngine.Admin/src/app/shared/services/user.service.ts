@@ -13,8 +13,8 @@ export class UserService {
   	this.isUserLoggedIn = true;
   }
 
-  getUserLogedIn = function(){
-  	return this.isUserLogged;
+  getUserLoggedIn = function(){
+  	return this.isUserLoggedIn;
   }
 
 }

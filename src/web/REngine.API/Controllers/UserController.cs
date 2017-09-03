@@ -72,6 +72,7 @@ namespace REngine.API.Controllers
                 {
                     // TODO: create identifier for using for further 
                     var returnValue = AutoMapper.Mapper.Map<API.Models.UserIdentity>(result);
+                    returnValue.IsAuthenticated = true;
                     return base.SendSuccessMsg<API.Models.UserIdentity>(returnValue, "User Authenticated");
                 }
                 else
