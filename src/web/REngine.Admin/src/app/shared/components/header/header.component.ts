@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
+import {UserService} from '../../services';
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
@@ -9,7 +10,12 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class HeaderComponent implements OnInit {
 
-    constructor(private translate: TranslateService, public router: Router) {
+    ActiveUser = '';
+
+    constructor(private translate: TranslateService, 
+                public router: Router, 
+                private userSrv:UserService) {
+        this.ActiveUser = userSrv.getLoggedInUserName();
         this.router.events.subscribe((val) => {
             if (val instanceof NavigationEnd && window.innerWidth <= 992) {
                 this.toggleSidebar();

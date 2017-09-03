@@ -1,20 +1,33 @@
 import { Injectable } from '@angular/core';
 
 @Injectable()
+
 export class UserService {
 
   private isUserLoggedIn;
-  private loggedInUser;
+  private username;
+  private firstName;
+  private lastName;
+  
   constructor() { 
   	this.isUserLoggedIn = false;
   }
 
-  setUserLoggedin = function(){
+  setUserLoggedin = function(username:String,fname:string,lname:string){
+    this.username= username;
+    this.firstName = fname;
+    this.lastName = lname;
   	this.isUserLoggedIn = true;
   }
 
-  getUserLoggedIn = function(){
+  isUserAuthenticated = function(){
+    console.log(this.firstName + ' ' + this.lastName);
   	return this.isUserLoggedIn;
   }
+
+  getLoggedInUserName = function(){
+    return this.firstName + ' ' + this.lastName;
+  }
+
 
 }

@@ -41,11 +41,13 @@ export class LoginComponent implements OnInit {
                                 password:user.password
                             }).subscribe(
                             data => {
-                                if(data.data.IsAuthenticated)
+                                var result = data.data;
+                                if(result.IsAuthenticated)
                                 {
                                     console.log("User Validated");
-                                    this.userSrv.setUserLoggedin();
-                                    console.log(this.userSrv.getUserLoggedIn());
+                                    this.userSrv.setUserLoggedin(result.Username,
+                                                                 result.FirstName,
+                                                                 result.LastName);
                                     this.router.navigate(["/dashboard"]);
 
                                 }

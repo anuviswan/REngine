@@ -19,6 +19,7 @@ namespace REngine.Core.Concrete
 
         public bool Add(Model.User.Identity UserIdentity)
         {
+            UserIdentity.IsActive = true;
             return _UserInstance.Add(UserIdentity);
         }
 
