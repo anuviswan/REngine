@@ -6,8 +6,8 @@ import { Subject } from 'rxjs/Rx';
 
 import 'rxjs/add/operator/map';
 
-interface Person {
-	ID: number;
+interface User {
+	UserName: string;
 	FirstName: string;
 	LastName: string;
 }
@@ -24,7 +24,7 @@ export class UserListComponent implements OnInit {
 
 	dtOptions: DataTables.Settings = {};
 	dtData;
-	persons: Person[] = [];
+	users: User[] = [];
 	// We use this trigger because fetching the list of persons can be quite long,
 	// thus we ensure the data is fetched before rendering
 	dtTrigger: Subject<any> = new Subject();
@@ -35,13 +35,13 @@ export class UserListComponent implements OnInit {
 	ngOnInit() {
 
 		this.dtOptions = {
-
+			  "lengthChange": false
 		};
 		this.apiSrv.getRequest('user/getall',
-		{}).subscribe(persons => {
-			this.persons = persons.data;
+		{}).subscribe(data => {
+			this.users = data.data;
 			// Calling the DT trigger to manually render the table
-			console.log(this.persons);
+			console.log(this.users);
 			this.dtTrigger.next();
 		});
 

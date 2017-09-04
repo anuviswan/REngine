@@ -1,16 +1,16 @@
 <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
 <thead>
   <tr>
-    <th>ID</th>
+    <th>Username</th>
     <th>First name</th>
     <th>Last name</th>
   </tr>
 </thead>
 <tbody>
-  <tr *ngFor="let person of persons">
-    <td>{{ person.ID }}</td>
-    <td>{{ person.FirstName }}</td>
-    <td>{{ person.LastName }}</td>
+  <tr *ngFor="let user of users">
+    <td>{{ user.Username }}</td>
+    <td>{{ user.FirstName }}</td>
+    <td>{{ user.LastName }}</td>
   </tr>
 </tbody>
 </table>
