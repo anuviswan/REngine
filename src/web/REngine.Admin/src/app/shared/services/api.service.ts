@@ -16,4 +16,8 @@ export class ApiService {
   						  
   }
 
+  getRequest(controller:string,param:any):Observable<any>{
+  	return this.httpClient.get(this.baseUrl + controller,param);
+  }
+
 }

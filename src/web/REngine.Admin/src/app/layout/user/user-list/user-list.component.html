@@ -1,3 +1,16 @@
-<p>
-  user-list works!
-</p>
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+<thead>
+  <tr>
+    <th>ID</th>
+    <th>First name</th>
+    <th>Last name</th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let person of persons">
+    <td>{{ person.ID }}</td>
+    <td>{{ person.FirstName }}</td>
+    <td>{{ person.LastName }}</td>
+  </tr>
+</tbody>
+</table>

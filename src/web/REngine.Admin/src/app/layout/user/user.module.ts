@@ -1,16 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { DataTablesModule} from 'angular-datatables';
+
 import { UserComponent } from './user.component';
 import { UserRoutingModule } from './user-routing.module';
 import { PageHeaderModule } from './../../shared';
+import { UserListComponent } from './user-list/user-list.component';
 
 @NgModule({
     imports: [
         CommonModule,
         UserRoutingModule,
+        DataTablesModule,
         PageHeaderModule
     ],
-    declarations: [UserComponent]
+    declarations: [UserComponent, UserListComponent]
 })
 export class UserModule { }
