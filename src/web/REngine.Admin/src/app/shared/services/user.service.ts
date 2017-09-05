@@ -10,7 +10,7 @@ export class UserService {
   private lastName;
   
   constructor() { 
-  	this.isUserLoggedIn = false;
+  	this.isUserLoggedIn = true;
   }
 
   setUserLoggedin = function(username:String,fname:string,lname:string){

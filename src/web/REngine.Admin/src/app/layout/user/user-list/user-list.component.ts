@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 
 import { UserService } from '../../../shared';
 import { ApiService } from '../../../shared';
@@ -22,20 +22,32 @@ interface User {
 
 export class UserListComponent implements OnInit {
 
-	dtOptions: DataTables.Settings = {};
+	dtOptions: any = {};
+	selectedUserName = '';
 	dtData;
 	users: User[] = [];
 	// We use this trigger because fetching the list of persons can be quite long,
 	// thus we ensure the data is fetched before rendering
 	dtTrigger: Subject<any> = new Subject();
-	constructor(private apiSrv:ApiService) { 
+	constructor(private apiSrv:ApiService,private zone: NgZone) { 
 
 	}
 
 	ngOnInit() {
 
 		this.dtOptions = {
-			  "lengthChange": false
+			  select:true,
+			  "lengthChange": false,
+			  rowCallback: (row: Node, data: any[] | Object, index: number) => {
+        const self = this;
+        // Unbind first in order to avoid any duplicate handler
+        // (see https://github.com/l-lin/angular-datatables/issues/87)
+        $('td', row).unbind('click');
+        $('td', row).bind('click', () => {
+          self.someClickHandler(data);
+        });
+        return row;
+      }
 		};
 		this.apiSrv.getRequest('user/getall',
 		{}).subscribe(data => {
@@ -52,4 +64,9 @@ export class UserListComponent implements OnInit {
 		const body = res.json();
 		return body || {};
 	}
+
+	 someClickHandler(info: any): void {
+	 	console.log(info);
+    this.selectedUserName = info[0];
+  }
 }
