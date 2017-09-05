@@ -1,11 +1,10 @@
 <div [@routerTransition]>
     <app-page-header [heading]="'Users'" [icon]="'fa-users'"></app-page-header>
-    <a [routerLink]="['./userlist']" routerLinkActive="active"><button class="btn btn-primary">User List</button></a>    
-    <button class="btn btn-primary">Add User</button>
-    <button class="btn btn-primary">View/Update User</button>
+    <a [routerLink]="['./userlist']" routerLinkActive="active" class="btn btn-primary">User List</a>
+    <a [routerLink]="['./viewuser']" routerLinkActive="active" class="btn btn-primary">View User</a>
+    <a [routerLink]="['./deleteuser']" routerLinkActive="active" class="btn btn-primary">Delete User</a>
     <hr>
   <div class="page">
-    <!-- <app-user-list></app-user-list> -->
     <router-outlet></router-outlet>
    </div>
    
