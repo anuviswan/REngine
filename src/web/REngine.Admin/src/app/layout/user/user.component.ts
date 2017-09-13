@@ -10,9 +10,20 @@ import { routerTransition } from '../../router.animations';
 })
 export class UserComponent implements OnInit {
 
+  selectedUser;
   constructor()  {}
 
   ngOnInit() {
+  }
+
+  setSelectedUser(user){
+  	
+  	this.selectedUser = user;
+  }
+
+  getSelectedUser(){
+  	
+  	return this.selectedUser;
   }
 
 }

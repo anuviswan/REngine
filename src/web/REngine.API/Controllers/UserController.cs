@@ -20,7 +20,7 @@ namespace REngine.API.Controllers
             _UserInstance = UserInstance;
         }
 
-        public Models.ReturnValue<Models.UserIdentity> Get(string Username)
+        public Models.ReturnValue<Models.UserIdentity> GetUser(string Username)
         {
             try
             {

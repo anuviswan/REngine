@@ -1,9 +1,9 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone,forwardRef,Injectable, Inject } from '@angular/core';
 
 import { UserService } from '../../../shared';
 import { ApiService } from '../../../shared';
 import { Subject } from 'rxjs/Rx';
-
+import { UserComponent } from '../user.component';
 import 'rxjs/add/operator/map';
 
 interface User {
@@ -22,6 +22,7 @@ interface User {
 
 export class UserListComponent implements OnInit {
 
+	usercmp;
 	dtOptions: any = {};
 	selectedUserName = '';
 	dtData;
@@ -29,44 +30,48 @@ export class UserListComponent implements OnInit {
 	// We use this trigger because fetching the list of persons can be quite long,
 	// thus we ensure the data is fetched before rendering
 	dtTrigger: Subject<any> = new Subject();
-	constructor(private apiSrv:ApiService,private zone: NgZone) { 
+	constructor(private apiSrv:ApiService,
+		private zone: NgZone,
+		@Inject(forwardRef(() => UserComponent)) private user:UserComponent) { 
+
+		this.usercmp = user;		
 
 	}
 
 	ngOnInit() {
 
+
 		this.dtOptions = {
-			  select:true,
-			  "lengthChange": false,
-			  rowCallback: (row: Node, data: any[] | Object, index: number) => {
-        const self = this;
-        // Unbind first in order to avoid any duplicate handler
-        // (see https://github.com/l-lin/angular-datatables/issues/87)
-        $('td', row).unbind('click');
-        $('td', row).bind('click', () => {
-          self.someClickHandler(data);
-        });
-        return row;
-      }
+			select:true,
+			"lengthChange": false,
+			rowCallback: (row: Node, data: any[] | Object, index: number) => {
+				const self = this;
+				// Unbind first in order to avoid any duplicate handler
+				// (see https://github.com/l-lin/angular-datatables/issues/87)
+				$('td', row).unbind('click');
+				$('td', row).bind('click', () => {
+					self.rowClickHandler(data);
+				});
+				return row;
+			}
 		};
 		this.apiSrv.getRequest('user/getall',
-		{}).subscribe(data => {
-			this.users = data.data;
-			// Calling the DT trigger to manually render the table
-			console.log(this.users);
-			this.dtTrigger.next();
-		});
+			{}).subscribe(data => {
+				this.users = data.data;
+				// Calling the DT trigger to manually render the table
+				this.dtTrigger.next();
+			});
 
-		
+			
+		}
+
+		private extractData(res: Response) {
+			const body = res.json();
+			return body || {};
+		}
+
+		rowClickHandler(info: any): void {
+			this.selectedUserName = info[0];
+			this.usercmp.setSelectedUser(this.selectedUserName);
+		}
 	}
-
-	private extractData(res: Response) {
-		const body = res.json();
-		return body || {};
-	}
-
-	 someClickHandler(info: any): void {
-	 	console.log(info);
-    this.selectedUserName = info[0];
-  }
-}

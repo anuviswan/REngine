@@ -17,11 +17,10 @@ export class UserService {
     this.username= username;
     this.firstName = fname;
     this.lastName = lname;
-  	this.isUserLoggedIn = true;
+    this.isUserLoggedIn = true;
   }
 
   isUserAuthenticated = function(){
-    console.log(this.firstName + ' ' + this.lastName);
   	return this.isUserLoggedIn;
   }
 

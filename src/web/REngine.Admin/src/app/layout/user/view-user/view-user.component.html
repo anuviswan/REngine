@@ -1,3 +1,35 @@
-<p>
-  view-user works!
-</p>
+            <form role="form"
+            [formGroup] ="frmUser" (ngSubmit)="onSubmit(frmUser.value)">
+            
+                <fieldset class="form-group">
+						<label for="disabledSelect">Username</label>
+                        <input class="form-control" id="disabledInput" type="text"  disabled="" formControlName = "username">
+                </fieldset>
+
+                <fieldset class="form-group">
+                    <label>First Name</label>
+                    <input class="form-control" placeholder="Enter text" formControlName="firstname">
+                </fieldset>
+
+                <fieldset class="form-group">
+                    <label>Last Name</label>
+                    <input class="form-control" placeholder="Enter text" formControlName="lastname">
+                </fieldset>
+
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value=""> Is Enabled
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value=""> Is Admin
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-secondary">Submit Button</button>
+                <button type="reset" class="btn btn-secondary">Reset Button</button>
+
+            </form>

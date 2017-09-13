@@ -34,7 +34,6 @@ export class LoginComponent implements OnInit {
     }
 
     onSubmit(user) {
-        console.log('Submitting Form');
         this.apiService.postRequest('user/validate',
                             {
                                 username:user.username,
@@ -44,14 +43,12 @@ export class LoginComponent implements OnInit {
                                 var result = data.data;
                                 if(result.IsAuthenticated)
                                 {
-                                    console.log("User Validated");
                                     this.userSrv.setUserLoggedin(result.Username,
                                                                  result.FirstName,
                                                                  result.LastName);
                                     this.router.navigate(["/dashboard"]);
 
                                 }
-                                console.log(data.data);
                                 }
                             );
         

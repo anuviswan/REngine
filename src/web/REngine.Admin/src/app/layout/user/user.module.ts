@@ -8,15 +8,18 @@ import { UserRoutingModule } from './user-routing.module';
 import { PageHeaderModule } from './../../shared';
 import { UserListComponent } from './user-list/user-list.component';
 import { ViewUserComponent } from './view-user/view-user.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     imports: [
         CommonModule,
         UserRoutingModule,
         DataTablesModule,
+        ReactiveFormsModule,
         PageHeaderModule
     ],
     declarations: [UserComponent, UserListComponent, ViewUserComponent]
 })
-export class UserModule { }
+export class UserModule {
+
+ }
