@@ -26,7 +26,8 @@ export class ViewUserComponent implements OnInit {
 		this.frmUser = new FormGroup({
 			username : new FormControl(""),
 			firstname : new FormControl(""),
-			lastname : new FormControl("")
+			lastname : new FormControl(""),
+			isEnabled : new FormControl(true)
 		});
 
 
@@ -37,7 +38,8 @@ export class ViewUserComponent implements OnInit {
 				this.frmUser = new FormGroup({
 					username : new FormControl(data.data.Username),
 					firstname : new FormControl(data.data.FirstName),
-					lastname : new FormControl(data.data.LastName)
+					lastname : new FormControl(data.data.LastName),
+					isEnabled : new FormControl(data.data.IsActive)
 				});
 			}
 			);
